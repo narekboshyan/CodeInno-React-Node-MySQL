@@ -6,7 +6,7 @@ import { fetchingRestaurantData } from "../../actions/restaurantActions";
 
 const RestaurantList = () => {
     const dispatch = useDispatch();
-    const { restaurants, error, loading } = useSelector(
+    const { restaurants} = useSelector(
         state => state.restaurants
     );
 
@@ -14,11 +14,7 @@ const RestaurantList = () => {
         dispatch(fetchingRestaurantData());
     }, [dispatch]);
 
-    console.log("RESTAURANTS", restaurants);
 
-    const geoPositionHandler = id => {
-        console.log("SHOWING ID", id);
-    };
 
     return (
         <div className={classes.restaurantContainer}>
@@ -26,7 +22,6 @@ const RestaurantList = () => {
                 <RestaurantItem
                     key={item.id}
                     {...item}
-                    getPosition={geoPositionHandler}
                 />
             ))}
         </div>

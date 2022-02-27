@@ -7,19 +7,20 @@ import classes from "./RestaurantDetails.module.scss";
 
 const RestaurantDetails = () => {
     const dispatch = useDispatch();
-    const { error, loading, restaurant } = useSelector(
+    const { loading, restaurant } = useSelector(
         state => state.restaurant
     );
 
-    console.log(error, loading, restaurant);
     const { id } = useParams();
 
     useEffect(() => {
         dispatch(fetchingSingleRestaurant(id));
+        
     }, [dispatch, id]);
 
     return (
         <div className={classes.restaurantDetails}>
+        {loading && <p>Loading...</p> }    
             {restaurant && (
                 <Fragment>
                     <div className={classes.restaurantData}>

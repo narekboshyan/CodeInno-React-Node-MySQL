@@ -1,28 +1,15 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import classes from "./Map.module.scss";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import { useSelector } from "react-redux";
 import ChangeMapView from "./ChangeMapView";
 
 const Map = () => {
-    const [geoData, setGeoData] = useState([]);
     const {
         restaurants,
         selectedRestaurant: { restaurant },
     } = useSelector(state => state);
 
-    useEffect(() => {
-        restaurants?.restaurants?.forEach((r, i) => {
-            setGeoData(prevState => [
-                ...prevState,
-                {
-                    latitude: r.latitude,
-                    longitude: r.longitude,
-                },
-            ]);
-        });
-    }, [restaurants]);
-    console.log("REStORANTS DATA", restaurants);
 
     return (
         <div className={classes.mapContainer}>

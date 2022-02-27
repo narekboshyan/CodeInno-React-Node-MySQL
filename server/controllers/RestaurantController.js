@@ -6,8 +6,6 @@ export const getAllPosts = async (req, res, next) => {
         const sortedRestaurants = restaurants.sort(
             (a, b) => b.rating - a.rating
         );
-
-        console.log(sortedRestaurants);
         res.status(200).json({ restaurants: sortedRestaurants });
     } catch (error) {
         console.log(error);

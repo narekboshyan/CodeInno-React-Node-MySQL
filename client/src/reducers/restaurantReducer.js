@@ -5,7 +5,6 @@ import {
     GET_SINGLE_RESTAURANT_REQUEST,
     GET_SINGLE_RESTAURANT_SUCCESS,
     GET_SINGLE_RESTAURANT_FAIL,
-    GET_GEOLOCATION_DATA,
     GET_FIRST_RESTAURANT_DATA,
 } from "../constants/restaurantTypes";
 
@@ -64,11 +63,13 @@ export const singleRestaurantReducer = (
         case GET_SINGLE_RESTAURANT_SUCCESS:
             return {
                 ...state,
+                loading:false,
                 restaurant: payload,
             };
         case GET_SINGLE_RESTAURANT_FAIL:
             return {
                 ...state,
+                loading:false,
                 error: payload,
             };
 

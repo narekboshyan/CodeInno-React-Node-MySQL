@@ -4,7 +4,6 @@ import {
     GET_ALL_RESTAURANTS_REQUEST,
     GET_ALL_RESTAURANTS_SUCCESS,
     GET_FIRST_RESTAURANT_DATA,
-    GET_GEOLOCATION_DATA,
     GET_SINGLE_RESTAURANT_FAIL,
     GET_SINGLE_RESTAURANT_REQUEST,
     GET_SINGLE_RESTAURANT_SUCCESS,
@@ -21,7 +20,6 @@ export const fetchingRestaurantData = () => async dispatch => {
             type: GET_ALL_RESTAURANTS_SUCCESS,
             payload: data.restaurants,
         });
-        console.log("data.restaurants[0]", data.restaurants[0]);
         dispatch({
             type: GET_FIRST_RESTAURANT_DATA,
             payload: data.restaurants[0],
