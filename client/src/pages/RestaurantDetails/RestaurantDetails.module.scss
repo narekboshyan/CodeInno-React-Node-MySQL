@@ -1,0 +1,30 @@
+.restaurantDetails {
+    display: grid;
+    height: calc(100vh - 10rem);
+    padding: 5rem;
+    grid-template-columns: repeat(5, 1fr);
+
+    .restaurantData {
+        grid-column: 1/4;
+
+        h2 {
+            font-size: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        img {
+            width: 60%;
+        }
+    }
+    .restaurantInfo {
+        display: flex;
+        flex-direction: column;
+        grid-column: 4/6;
+        justify-content: center;
+
+        h4 {
+            font-size: 2rem;
+        }
+    }
+}
