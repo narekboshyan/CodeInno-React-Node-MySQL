@@ -3,13 +3,14 @@ import classes from "./Map.module.scss";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import { useSelector } from "react-redux";
 import ChangeMapView from "./ChangeMapView";
+import { Link, useNavigate } from "react-router-dom";
 
 const Map = () => {
+    const navigate = useNavigate();
     const {
         restaurants,
         selectedRestaurant: { restaurant },
     } = useSelector(state => state);
-
 
     return (
         <div className={classes.mapContainer}>
@@ -39,6 +40,12 @@ const Map = () => {
                             restaurants.restaurants.map((restaurant, i) => (
                                 <Marker
                                     riseOnHover={true}
+                                    eventHandlers={{
+                                        click: e =>
+                                            navigate(
+                                                `/restaurant/${restaurant.id}`
+                                            ),
+                                    }}
                                     position={[
                                         restaurant.latitude,
                                         restaurant.longitude,
@@ -58,7 +65,6 @@ const Map = () => {
                                             <p>Rating: {restaurant.rating}</p>
                                         </Fragment>
                                     </Tooltip>
-                                    <Popup> PopUp</Popup>
                                 </Marker>
                             ))}
                     </MapContainer>

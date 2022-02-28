@@ -6,6 +6,9 @@ import {
     GET_SINGLE_RESTAURANT_SUCCESS,
     GET_SINGLE_RESTAURANT_FAIL,
     GET_FIRST_RESTAURANT_DATA,
+    SUBMIT_FEEDBACK_REQUEST,
+    SUBMIT_FEEDBACK_SUCCESS,
+    SUBMIT_FEEDBACK_FAIL,
 } from "../constants/restaurantTypes";
 
 const initialRestaurantsState = {
@@ -63,13 +66,13 @@ export const singleRestaurantReducer = (
         case GET_SINGLE_RESTAURANT_SUCCESS:
             return {
                 ...state,
-                loading:false,
+                loading: false,
                 restaurant: payload,
             };
         case GET_SINGLE_RESTAURANT_FAIL:
             return {
                 ...state,
-                loading:false,
+                loading: false,
                 error: payload,
             };
 
@@ -85,6 +88,36 @@ export const geolocationReducer = (state = {}, action) => {
             return {
                 restaurant: payload,
             };
+        default:
+            return state;
+    }
+};
+
+export const feedbackReducer = (
+    state = { feedback: {}, loading: false, error: null },
+    action
+) => {
+    const { type, payload } = action;
+    switch (type) {
+        case SUBMIT_FEEDBACK_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+
+        case SUBMIT_FEEDBACK_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                feedback: payload,
+            };
+        case SUBMIT_FEEDBACK_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: payload,
+            };
+
         default:
             return state;
     }
